@@ -6,13 +6,65 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		20594CC32ECE248F0079F742 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20594CC12ECE248F0079F742 /* Assets.xcassets */; };
+		20594CC42ECE248F0079F742 /* HealthStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20594CB42ECE248F0079F742 /* HealthStatus.swift */; };
+		20594CC52ECE248F0079F742 /* DroneDispatchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20594CAE2ECE248F0079F742 /* DroneDispatchManager.swift */; };
+		20594CC62ECE248F0079F742 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20594CBF2ECE248F0079F742 /* SettingsView.swift */; };
+		20594CC72ECE248F0079F742 /* ContactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20594CAC2ECE248F0079F742 /* ContactManager.swift */; };
+		20594CC82ECE248F0079F742 /* HealthGuardApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20594CA92ECE248F0079F742 /* HealthGuardApp.swift */; };
+		20594CC92ECE248F0079F742 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20594CBC2ECE248F0079F742 /* DashboardView.swift */; };
+		20594CCA2ECE248F0079F742 /* EmergencyGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20594CBD2ECE248F0079F742 /* EmergencyGuideView.swift */; };
+		20594CCB2ECE248F0079F742 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20594CBE2ECE248F0079F742 /* HistoryView.swift */; };
+		20594CCC2ECE248F0079F742 /* Vital.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20594CB52ECE248F0079F742 /* Vital.swift */; };
+		20594CCD2ECE248F0079F742 /* ContactManagementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20594CBB2ECE248F0079F742 /* ContactManagementView.swift */; };
+		20594CCE2ECE248F0079F742 /* MockDataGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20594CB92ECE248F0079F742 /* MockDataGenerator.swift */; };
+		20594CCF2ECE248F0079F742 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20594CB12ECE248F0079F742 /* NotificationManager.swift */; };
+		20594CD02ECE248F0079F742 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20594CAD2ECE248F0079F742 /* DataManager.swift */; };
+		20594CD12ECE248F0079F742 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20594CB02ECE248F0079F742 /* HealthKitManager.swift */; };
+		20594CD22ECE248F0079F742 /* HealthAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20594CAF2ECE248F0079F742 /* HealthAnalyzer.swift */; };
+		20594CD32ECE248F0079F742 /* EmergencyContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20594CB32ECE248F0079F742 /* EmergencyContact.swift */; };
+		20594CD42ECE248F0079F742 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20594CAA2ECE248F0079F742 /* MainTabView.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		20594CA92ECE248F0079F742 /* HealthGuardApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthGuardApp.swift; sourceTree = "<group>"; };
+		20594CAA2ECE248F0079F742 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		20594CAC2ECE248F0079F742 /* ContactManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManager.swift; sourceTree = "<group>"; };
+		20594CAD2ECE248F0079F742 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		20594CAE2ECE248F0079F742 /* DroneDispatchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DroneDispatchManager.swift; sourceTree = "<group>"; };
+		20594CAF2ECE248F0079F742 /* HealthAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthAnalyzer.swift; sourceTree = "<group>"; };
+		20594CB02ECE248F0079F742 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
+		20594CB12ECE248F0079F742 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		20594CB32ECE248F0079F742 /* EmergencyContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyContact.swift; sourceTree = "<group>"; };
+		20594CB42ECE248F0079F742 /* HealthStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStatus.swift; sourceTree = "<group>"; };
+		20594CB52ECE248F0079F742 /* Vital.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vital.swift; sourceTree = "<group>"; };
+		20594CB92ECE248F0079F742 /* MockDataGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataGenerator.swift; sourceTree = "<group>"; };
+		20594CBB2ECE248F0079F742 /* ContactManagementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManagementView.swift; sourceTree = "<group>"; };
+		20594CBC2ECE248F0079F742 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		20594CBD2ECE248F0079F742 /* EmergencyGuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyGuideView.swift; sourceTree = "<group>"; };
+		20594CBE2ECE248F0079F742 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		20594CBF2ECE248F0079F742 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		20594CC12ECE248F0079F742 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		206F8B4B2ECDF16C00ED66ED /* HelloWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		20594CD62ECE298A0079F742 /* Exceptions for "HelloWorld" folder in "HelloWorld" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"HelloWorld-Info.plist",
+			);
+			target = 206F8B4A2ECDF16C00ED66ED /* HelloWorld */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		206F8B4D2ECDF16C00ED66ED /* HelloWorld */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				20594CD62ECE298A0079F742 /* Exceptions for "HelloWorld" folder in "HelloWorld" target */,
+			);
 			path = HelloWorld;
 			sourceTree = "<group>";
 		};
@@ -29,9 +81,91 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		20594CAB2ECE248F0079F742 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				20594CA92ECE248F0079F742 /* HealthGuardApp.swift */,
+				20594CAA2ECE248F0079F742 /* MainTabView.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		20594CB22ECE248F0079F742 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				20594CAC2ECE248F0079F742 /* ContactManager.swift */,
+				20594CAD2ECE248F0079F742 /* DataManager.swift */,
+				20594CAE2ECE248F0079F742 /* DroneDispatchManager.swift */,
+				20594CAF2ECE248F0079F742 /* HealthAnalyzer.swift */,
+				20594CB02ECE248F0079F742 /* HealthKitManager.swift */,
+				20594CB12ECE248F0079F742 /* NotificationManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		20594CB62ECE248F0079F742 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				20594CB32ECE248F0079F742 /* EmergencyContact.swift */,
+				20594CB42ECE248F0079F742 /* HealthStatus.swift */,
+				20594CB52ECE248F0079F742 /* Vital.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		20594CB72ECE248F0079F742 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		20594CB82ECE248F0079F742 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		20594CBA2ECE248F0079F742 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				20594CB92ECE248F0079F742 /* MockDataGenerator.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		20594CC02ECE248F0079F742 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				20594CBB2ECE248F0079F742 /* ContactManagementView.swift */,
+				20594CBC2ECE248F0079F742 /* DashboardView.swift */,
+				20594CBD2ECE248F0079F742 /* EmergencyGuideView.swift */,
+				20594CBE2ECE248F0079F742 /* HistoryView.swift */,
+				20594CBF2ECE248F0079F742 /* SettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		20594CC22ECE248F0079F742 /* HealthProd */ = {
+			isa = PBXGroup;
+			children = (
+				20594CAB2ECE248F0079F742 /* App */,
+				20594CB22ECE248F0079F742 /* Managers */,
+				20594CB62ECE248F0079F742 /* Models */,
+				20594CB72ECE248F0079F742 /* Resources */,
+				20594CB82ECE248F0079F742 /* Services */,
+				20594CBA2ECE248F0079F742 /* Utilities */,
+				20594CC02ECE248F0079F742 /* Views */,
+				20594CC12ECE248F0079F742 /* Assets.xcassets */,
+			);
+			path = HealthProd;
+			sourceTree = "<group>";
+		};
 		206F8B422ECDF16C00ED66ED = {
 			isa = PBXGroup;
 			children = (
+				20594CC22ECE248F0079F742 /* HealthProd */,
 				206F8B4D2ECDF16C00ED66ED /* HelloWorld */,
 				206F8B4C2ECDF16C00ED66ED /* Products */,
 			);
@@ -109,6 +243,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20594CC32ECE248F0079F742 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +254,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20594CC42ECE248F0079F742 /* HealthStatus.swift in Sources */,
+				20594CC52ECE248F0079F742 /* DroneDispatchManager.swift in Sources */,
+				20594CC62ECE248F0079F742 /* SettingsView.swift in Sources */,
+				20594CC72ECE248F0079F742 /* ContactManager.swift in Sources */,
+				20594CC82ECE248F0079F742 /* HealthGuardApp.swift in Sources */,
+				20594CC92ECE248F0079F742 /* DashboardView.swift in Sources */,
+				20594CCA2ECE248F0079F742 /* EmergencyGuideView.swift in Sources */,
+				20594CCB2ECE248F0079F742 /* HistoryView.swift in Sources */,
+				20594CCC2ECE248F0079F742 /* Vital.swift in Sources */,
+				20594CCD2ECE248F0079F742 /* ContactManagementView.swift in Sources */,
+				20594CCE2ECE248F0079F742 /* MockDataGenerator.swift in Sources */,
+				20594CCF2ECE248F0079F742 /* NotificationManager.swift in Sources */,
+				20594CD02ECE248F0079F742 /* DataManager.swift in Sources */,
+				20594CD12ECE248F0079F742 /* HealthKitManager.swift in Sources */,
+				20594CD22ECE248F0079F742 /* HealthAnalyzer.swift in Sources */,
+				20594CD32ECE248F0079F742 /* EmergencyContact.swift in Sources */,
+				20594CD42ECE248F0079F742 /* MainTabView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,11 +403,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = HelloWorld.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5M28H2P5HR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "HelloWorld-Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "This app reads your health data to monitor vitals and detect emergencies.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "This app writes health data to help track emergency events.";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Location is used during emergencies even in background.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app uses your location to assist emergency responders and drone dispatch.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -283,11 +442,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = HelloWorld.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5M28H2P5HR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "HelloWorld-Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "This app reads your health data to monitor vitals and detect emergencies.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "This app writes health data to help track emergency events.";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Location is used during emergencies even in background.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app uses your location to assist emergency responders and drone dispatch.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
