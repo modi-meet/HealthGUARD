@@ -1,12 +1,12 @@
 import SwiftUI
+import FirebaseCore
 
 @main
 struct HealthGuardApp: App {
-    // Initialize Managers on launch
+    @StateObject private var dataManager = DataManager()
+
     init() {
-        _ = HealthKitManager.shared
-        _ = NotificationManager.shared
-        _ = DataManager.shared
+        FirebaseApp.configure()
     }
     
     var body: some Scene {

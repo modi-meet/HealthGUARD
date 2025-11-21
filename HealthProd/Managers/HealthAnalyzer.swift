@@ -86,6 +86,33 @@ class HealthAnalyzer: ObservableObject {
                 // Notify NotificationManager (to be implemented)
                 NotificationManager.shared.handleHealthStatusChange(status)
             }
+
+            if status == .critical {
+                self.sendEmergencyDataToFirebase()
+            }
         }
+    }
+
+    private func sendEmergencyDataToFirebase() {
+        // --- Replace with actual data ---
+        let latitude = 37.33182
+        let longitude = -122.03118
+        let userId = "testUser123" 
+        // ---------------------------------
+
+        let vitals = [
+            "heartRate": healthKitManager.currentHeartRate,
+            "spO2": healthKitManager.currentSpO2
+        ]
+
+        let emergencyData = EmergencyData(
+            latitude: latitude,
+            longitude: longitude,
+            timestamp: Date().timeIntervalSince1970,
+            userId: userId,
+            vitals: vitals
+        )
+
+        FirebaseManager.shared.sendEmergencyData(data: emergencyData)
     }
 }
