@@ -1,1 +1,3 @@
 HealthProd/GoogleService-Info.plist
+*.xcuserstate
+*.xcuserdata
