@@ -6,5 +6,11 @@
     <string>We need access to your health data to monitor your vitals for emergency detection.</string>
     <key>NSHealthUpdateUsageDescription</key>
     <string>We need access to your health data to store vital logs.</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>HealthGuard needs your location to help emergency responders find you during critical health situations.</string>
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>Background location monitoring enables emergency services to locate you even when the app is not active, ensuring help can reach you during critical health events.</string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>Always-on location is required to detect emergencies and dispatch help, even when the app is in the background.</string>
 </dict>
 </plist>

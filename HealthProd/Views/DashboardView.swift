@@ -1,79 +1,163 @@
 import SwiftUI
+internal import _LocationEssentials
 
 struct DashboardView: View {
-    @StateObject private var healthKitManager = HealthKitManager.shared
     @StateObject private var healthAnalyzer = HealthAnalyzer.shared
-    @StateObject private var droneManager = DroneDispatchManager.shared
-    
+    @StateObject private var healthKitManager = HealthKitManager.shared
     @State private var showEmergencyGuide = false
     
     var body: some View {
         NavigationView {
-            ScrollView {
-                VStack(spacing: 20) {
-                    // Status Header
-                    StatusHeaderView(status: healthAnalyzer.currentStatus)
-                    
-                    // Vitals Grid
-                    LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
-                        VitalCard(title: "Heart Rate", value: String(format: "%.0f", healthKitManager.currentHeartRate), unit: "BPM", icon: "heart.fill", color: .red)
-                        VitalCard(title: "SpO2", value: String(format: "%.0f", healthKitManager.currentSpO2), unit: "%", icon: "lungs.fill", color: .blue)
-                        VitalCard(title: "Blood Pressure", value: healthKitManager.currentBP, unit: "mmHg", icon: "waveform.path.ecg", color: .purple)
-                    }
-                    .padding()
-                    
-                    // Emergency Actions
-                    if healthAnalyzer.currentStatus == .critical {
-                        VStack(spacing: 16) {
-                            Text("CRITICAL EMERGENCY DETECTED")
-                                .font(.headline)
-                                .foregroundColor(.red)
+            ZStack {
+                AppColors.background.ignoresSafeArea()
+                
+                ScrollView {
+                    VStack(spacing: 24) {
+                        // BRANDED HEADER
+                        HStack(spacing: 12) {
+                            Image(systemName: "shield.lefthalf.filled.badge.checkmark")
+                                .font(.system(size: 36, weight: .bold))
+                                .foregroundColor(AppColors.primary)
                             
-                            Button(action: {
-                                showEmergencyGuide = true
-                            }) {
-                                Label("View Emergency Guide", systemImage: "exclamationmark.triangle.fill")
-                                    .font(.headline)
-                                    .foregroundColor(.white)
-                                    .frame(maxWidth: .infinity)
-                                    .padding()
-                                    .background(Color.red)
-                                    .cornerRadius(10)
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text("HealthGuard")
+                                    .font(AppFonts.largeTitle)
+                                    .fontWeight(.bold)
+                                
+                                Text("Your Life, Monitored. Your Safety, Assured.")
+                                    .font(AppFonts.subheadline)
+                                    .foregroundColor(AppColors.secondaryText)
                             }
                             
-                            if droneManager.isDroneEnRoute {
-                                VStack {
-                                    Text(droneManager.dispatchStatus)
-                                        .font(.headline)
-                                    Text("ETA: \(Int(droneManager.droneETA / 60)) min \(Int(droneManager.droneETA.truncatingRemainder(dividingBy: 60))) sec")
-                                        .font(.subheadline)
-                                        .monospacedDigit()
-                                }
+                            Spacer()
+                        }
+                        .padding(.horizontal, 20)
+                        .padding(.top, 10)
+                        
+                        // STATUS CARD
+                        VStack(spacing: 16) {
+                            Text("Current Status")
+                                .font(AppFonts.headline)
+                                .foregroundColor(AppColors.secondaryText)
+                            
+                            Text(healthAnalyzer.currentStatus.description.uppercased())
+                                .font(AppFonts.title1)
+                                .fontWeight(.black)
+                                .foregroundColor(statusColor)
                                 .padding()
-                                .background(Color.blue.opacity(0.1))
-                                .cornerRadius(10)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 16)
+                                        .fill(statusColor.opacity(0.1))
+                                )
+                            
+                            if healthAnalyzer.currentStatus == .critical {
+                                Button(action: { showEmergencyGuide = true }) {
+                                    HStack {
+                                        Image(systemName: "exclamationmark.triangle.fill")
+                                        Text("VIEW EMERGENCY GUIDE")
+                                    }
+                                    .font(AppFonts.headline)
+                                    .foregroundColor(.white)
+                                    .padding()
+                                    .frame(maxWidth: .infinity)
+                                    .background(AppColors.critical)
+                                    .cornerRadius(16)
+                                    .shadow(color: AppColors.critical.opacity(0.4), radius: 10, x: 0, y: 5)
+                                }
+                                .padding(.top, 8)
                             }
                         }
-                        .padding()
-                        .background(RoundedRectangle(cornerRadius: 12).stroke(Color.red, lineWidth: 2))
-                        .padding()
+                        .padding(24)
+                        .background(
+                            RoundedRectangle(cornerRadius: 24)
+                                .fill(AppColors.secondaryBackground)
+                                .shadow(color: Color.black.opacity(0.05), radius: 10, x: 0, y: 4)
+                        )
+                        .padding(.horizontal, 20)
+                        
+                        // VITALS GRID
+                        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 20) {
+                            VitalCard(
+                                title: "Heart Rate",
+                                value: "\(Int(healthKitManager.currentHeartRate)) BPM",
+                                icon: "heart.fill",
+                                severity: healthAnalyzer.currentStatus
+                            )
+                            
+                            VitalCard(
+                                title: "Blood Oxygen",
+                                value: "\(Int(healthKitManager.currentSpO2))%",
+                                icon: "lungs.fill",
+                                severity: healthAnalyzer.currentStatus
+                            )
+                            
+                            VitalCard(
+                                title: "Blood Pressure",
+                                value: "120/80",
+                                icon: "waveform.path.ecg",
+                                severity: .normal
+                            )
+                            
+                            VitalCard(
+                                title: "Stress Level",
+                                value: "Low",
+                                icon: "brain.head.profile",
+                                severity: .normal
+                            )
+                        }
+                        .padding(.horizontal, 20)
+                        
+                        // Recent Activity / Map Placeholder
+                        VStack(alignment: .leading, spacing: 16) {
+                            Text("Live Location Tracking")
+                                .font(AppFonts.headline)
+                                .foregroundColor(AppColors.text)
+                            
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 20)
+                                    .fill(AppColors.secondaryBackground)
+                                    .frame(height: 150)
+                                
+                                if let location = LocationManager.shared.currentLocation {
+                                    VStack {
+                                        Image(systemName: "location.fill")
+                                            .font(.title)
+                                            .foregroundColor(AppColors.primary)
+                                        Text("Lat: \(location.coordinate.latitude, specifier: "%.4f")")
+                                        Text("Lon: \(location.coordinate.longitude, specifier: "%.4f")")
+                                    }
+                                    .font(AppFonts.caption)
+                                    .foregroundColor(AppColors.secondaryText)
+                                } else {
+                                    Text("Locating...")
+                                        .font(AppFonts.body)
+                                        .foregroundColor(AppColors.secondaryText)
+                                }
+                            }
+                        }
+                        .padding(.horizontal, 20)
+                        
+                        Spacer(minLength: 40)
                     }
-                    
-                    Spacer()
                 }
             }
-            .navigationTitle("HealthGuard")
+            .navigationBarHidden(true)
             .sheet(isPresented: $showEmergencyGuide) {
                 EmergencyGuideView()
             }
-            .onAppear {
-                Task {
-                    await healthKitManager.requestAuthorization()
-                }
-            }
+        }
+    }
+    
+    var statusColor: Color {
+        switch healthAnalyzer.currentStatus {
+        case .critical: return AppColors.critical
+        case .major: return AppColors.warning
+        case .light: return AppColors.success
+        case .normal: return AppColors.primary
         }
     }
 }
+
 
 struct StatusHeaderView: View {
     let status: HealthStatus
@@ -110,37 +194,5 @@ struct StatusHeaderView: View {
         case .major: return "exclamationmark.triangle.fill"
         case .critical: return "cross.circle.fill"
         }
-    }
-}
-
-struct VitalCard: View {
-    let title: String
-    let value: String
-    let unit: String
-    let icon: String
-    let color: Color
-    
-    var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            HStack {
-                Image(systemName: icon)
-                    .foregroundColor(color)
-                Text(title)
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-            }
-            
-            HStack(alignment: .lastTextBaseline) {
-                Text(value)
-                    .font(.system(size: 24, weight: .bold))
-                Text(unit)
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-            }
-        }
-        .padding()
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .background(Color(UIColor.secondarySystemBackground))
-        .cornerRadius(12)
     }
 }

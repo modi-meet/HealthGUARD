@@ -1,5 +1,9 @@
 import Foundation
 import Combine
+import UIKit
+internal import _LocationEssentials
+
+
 
 class HealthAnalyzer: ObservableObject {
     static let shared = HealthAnalyzer()
@@ -58,6 +62,11 @@ class HealthAnalyzer: ObservableObject {
             newStatus = .light
         }
         
+        // ALWAYS Save to CoreData if there is any alert level (Light, Major, Critical)
+        if newStatus != .normal {
+             saveAlertToHistory(severity: newStatus, heartRate: heartRate, spO2: spO2, bloodPressure: "120/80") // Placeholder BP
+        }
+        
         // Update status if changed or if it's a serious alert and cooldown passed
         if newStatus != currentStatus {
             // If upgrading to a higher severity, update immediately
@@ -85,6 +94,64 @@ class HealthAnalyzer: ObservableObject {
                 self.lastAlertTime = Date()
                 // Notify NotificationManager (to be implemented)
                 NotificationManager.shared.handleHealthStatusChange(status)
+            }
+        }
+    }
+    
+    func saveAlertToHistory(severity: HealthStatus, heartRate: Double, spO2: Double, bloodPressure: String) {
+        DataManager.shared.saveAlert(
+            severity: severity.rawValue,
+            heartRate: heartRate,
+            spO2: spO2,
+            bloodPressure: bloodPressure,
+            latitude: LocationManager.shared.currentLocation?.coordinate.latitude ?? 0.0,
+            longitude: LocationManager.shared.currentLocation?.coordinate.longitude ?? 0.0,
+            droneDispatched: severity == .critical
+        )
+    }
+    
+    // Helper for testing - triggers critical alert with location capture
+    func triggerCriticalAlert(heartRate: Double, spO2: Double, bloodPressure: String) {
+        print("🚨 Critical alert triggered - capturing location...")
+        
+        // Step 1: Request current location (async with 5-second timeout)
+        LocationManager.shared.requestCurrentLocation { [weak self] location in
+            guard let self = self else { return }
+            
+            let latitude = location?.coordinate.latitude ?? 0.0
+            let longitude = location?.coordinate.longitude ?? 0.0
+            
+            if location != nil {
+                print("✅ Location captured: (\(latitude), \(longitude))")
+            } else {
+                print("⚠️ Location unavailable, using fallback (0.0, 0.0)")
+            }
+            
+            // Step 2: Save to CoreData
+            DataManager.shared.saveAlert(
+                severity: "critical",
+                heartRate: heartRate,
+                spO2: spO2,
+                bloodPressure: bloodPressure,
+                latitude: latitude,
+                longitude: longitude,
+                droneDispatched: true
+            )
+            
+            // Step 3: Send to Firebase
+            let userId = UIDevice.current.identifierForVendor?.uuidString ?? "unknown"
+            FirebaseManager.shared.sendCriticalAlert(
+                userId: userId,
+                heartRate: heartRate,
+                spO2: spO2,
+                bloodPressure: bloodPressure,
+                latitude: latitude,
+                longitude: longitude
+            )
+            
+            // Step 4: Update UI status on main thread
+            DispatchQueue.main.async {
+                self.updateStatus(.critical)
             }
         }
     }

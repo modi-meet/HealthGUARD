@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2046241F2ED01377008C588E /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2046241E2ED01377008C588E /* Config.swift */; };
+		204624242ED0185B008C588E /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204624232ED0185B008C588E /* Components.swift */; };
+		204624262ED01C28008C588E /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204624252ED01C28008C588E /* LocationManager.swift */; };
+		204624282ED01C4B008C588E /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204624272ED01C4B008C588E /* FirebaseManager.swift */; };
+		2046242A2ED01D60008C588E /* AppDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204624292ED01D60008C588E /* AppDesign.swift */; };
 		20594CC32ECE248F0079F742 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20594CC12ECE248F0079F742 /* Assets.xcassets */; };
 		20594CC42ECE248F0079F742 /* HealthStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20594CB42ECE248F0079F742 /* HealthStatus.swift */; };
 		20594CC52ECE248F0079F742 /* DroneDispatchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20594CAE2ECE248F0079F742 /* DroneDispatchManager.swift */; };
@@ -28,6 +33,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2046241E2ED01377008C588E /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		204624232ED0185B008C588E /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
+		204624252ED01C28008C588E /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		204624272ED01C4B008C588E /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		204624292ED01D60008C588E /* AppDesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDesign.swift; sourceTree = "<group>"; };
 		20594CA92ECE248F0079F742 /* HealthGuardApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthGuardApp.swift; sourceTree = "<group>"; };
 		20594CAA2ECE248F0079F742 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		20594CAC2ECE248F0079F742 /* ContactManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManager.swift; sourceTree = "<group>"; };
@@ -49,22 +59,9 @@
 		206F8B4B2ECDF16C00ED66ED /* HelloWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		20594CD62ECE298A0079F742 /* Exceptions for "HelloWorld" folder in "HelloWorld" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				"HelloWorld-Info.plist",
-			);
-			target = 206F8B4A2ECDF16C00ED66ED /* HelloWorld */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		206F8B4D2ECDF16C00ED66ED /* HelloWorld */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				20594CD62ECE298A0079F742 /* Exceptions for "HelloWorld" folder in "HelloWorld" target */,
-			);
 			path = HelloWorld;
 			sourceTree = "<group>";
 		};
@@ -93,6 +90,8 @@
 		20594CB22ECE248F0079F742 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				204624272ED01C4B008C588E /* FirebaseManager.swift */,
+				204624252ED01C28008C588E /* LocationManager.swift */,
 				20594CAC2ECE248F0079F742 /* ContactManager.swift */,
 				20594CAD2ECE248F0079F742 /* DataManager.swift */,
 				20594CAE2ECE248F0079F742 /* DroneDispatchManager.swift */,
@@ -138,6 +137,7 @@
 		20594CC02ECE248F0079F742 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				204624232ED0185B008C588E /* Components.swift */,
 				20594CBB2ECE248F0079F742 /* ContactManagementView.swift */,
 				20594CBC2ECE248F0079F742 /* DashboardView.swift */,
 				20594CBD2ECE248F0079F742 /* EmergencyGuideView.swift */,
@@ -165,6 +165,8 @@
 		206F8B422ECDF16C00ED66ED = {
 			isa = PBXGroup;
 			children = (
+				204624292ED01D60008C588E /* AppDesign.swift */,
+				2046241E2ED01377008C588E /* Config.swift */,
 				20594CC22ECE248F0079F742 /* HealthProd */,
 				206F8B4D2ECDF16C00ED66ED /* HelloWorld */,
 				206F8B4C2ECDF16C00ED66ED /* Products */,
@@ -259,16 +261,21 @@
 				20594CC62ECE248F0079F742 /* SettingsView.swift in Sources */,
 				20594CC72ECE248F0079F742 /* ContactManager.swift in Sources */,
 				20594CC82ECE248F0079F742 /* HealthGuardApp.swift in Sources */,
+				204624262ED01C28008C588E /* LocationManager.swift in Sources */,
 				20594CC92ECE248F0079F742 /* DashboardView.swift in Sources */,
 				20594CCA2ECE248F0079F742 /* EmergencyGuideView.swift in Sources */,
 				20594CCB2ECE248F0079F742 /* HistoryView.swift in Sources */,
+				2046242A2ED01D60008C588E /* AppDesign.swift in Sources */,
 				20594CCC2ECE248F0079F742 /* Vital.swift in Sources */,
+				204624282ED01C4B008C588E /* FirebaseManager.swift in Sources */,
 				20594CCD2ECE248F0079F742 /* ContactManagementView.swift in Sources */,
 				20594CCE2ECE248F0079F742 /* MockDataGenerator.swift in Sources */,
+				204624242ED0185B008C588E /* Components.swift in Sources */,
 				20594CCF2ECE248F0079F742 /* NotificationManager.swift in Sources */,
 				20594CD02ECE248F0079F742 /* DataManager.swift in Sources */,
 				20594CD12ECE248F0079F742 /* HealthKitManager.swift in Sources */,
 				20594CD22ECE248F0079F742 /* HealthAnalyzer.swift in Sources */,
+				2046241F2ED01377008C588E /* Config.swift in Sources */,
 				20594CD32ECE248F0079F742 /* EmergencyContact.swift in Sources */,
 				20594CD42ECE248F0079F742 /* MainTabView.swift in Sources */,
 			);

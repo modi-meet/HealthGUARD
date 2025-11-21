@@ -2,87 +2,93 @@ import SwiftUI
 
 struct EmergencyGuideView: View {
     @Environment(\.presentationMode) var presentationMode
-    @StateObject private var droneManager = DroneDispatchManager.shared
+    @State private var isAnimating = false
     
     var body: some View {
-        NavigationView {
-            ScrollView {
-                VStack(alignment: .leading, spacing: 20) {
-                    // Header
-                    HStack {
-                        Image(systemName: "cross.case.fill")
-                            .resizable()
-                            .frame(width: 40, height: 40)
-                            .foregroundColor(.white)
-                        Text("EMERGENCY GUIDE")
-                            .font(.largeTitle)
-                            .fontWeight(.black)
-                            .foregroundColor(.white)
-                    }
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.red)
-                    
-                    // Drone Status
-                    if droneManager.isDroneEnRoute {
-                        HStack {
-                            Image(systemName: "airplane.circle.fill") // Drone icon proxy
-                                .font(.largeTitle)
-                            VStack(alignment: .leading) {
-                                Text("Rescue Drone En Route")
-                                    .font(.headline)
-                                Text("ETA: \(Int(droneManager.droneETA / 60)) min")
-                                    .font(.subheadline)
-                            }
-                        }
-                        .padding()
-                        .background(Color.blue.opacity(0.1))
-                        .cornerRadius(10)
-                        .padding(.horizontal)
-                    }
-                    
-                    // Instructions
-                    Group {
-                        InstructionStep(number: 1, title: "Check Responsiveness", description: "Tap shoulders and shout 'Are you okay?'. If no response, proceed.")
-                        InstructionStep(number: 2, title: "Call 911", description: "If not already done, call emergency services immediately.")
-                        InstructionStep(number: 3, title: "Check Breathing", description: "Look for chest rise. Listen for breath sounds.")
-                        InstructionStep(number: 4, title: "Start CPR", description: "If not breathing, push hard and fast in center of chest (100-120 bpm).")
-                        InstructionStep(number: 5, title: "Wait for Drone", description: "Drone contains AED and Epipen. Follow audio instructions upon arrival.")
-                    }
-                    .padding(.horizontal)
-                    
-                    Spacer()
-                }
-            }
-            .navigationBarItems(trailing: Button("Close") {
-                presentationMode.wrappedValue.dismiss()
-            })
-        }
-    }
-}
-
-struct InstructionStep: View {
-    let number: Int
-    let title: String
-    let description: String
-    
-    var body: some View {
-        HStack(alignment: .top, spacing: 16) {
-            Text("\(number)")
-                .font(.largeTitle)
-                .fontWeight(.bold)
-                .foregroundColor(.white)
-                .frame(width: 50, height: 50)
-                .background(Circle().fill(Color.red))
+        ZStack {
+            // Blurred background
+            Color.black.opacity(0.8)
+                .ignoresSafeArea()
             
-            VStack(alignment: .leading, spacing: 4) {
-                Text(title)
-                    .font(.headline)
-                Text(description)
-                    .font(.body)
-                    .foregroundColor(.secondary)
+            // Pulsing Background Effect
+            Circle()
+                .fill(AppColors.critical.opacity(0.2))
+                .scaleEffect(isAnimating ? 1.5 : 1.0)
+                .opacity(isAnimating ? 0.0 : 1.0)
+                .animation(
+                    Animation.easeOut(duration: 2.0)
+                        .repeatForever(autoreverses: false),
+                    value: isAnimating
+                )
+                .frame(width: 300, height: 300)
+            
+            VStack(spacing: 32) {
+                // Pulsing critical indicator
+                ZStack {
+                    Circle()
+                        .fill(AppColors.critical)
+                        .frame(width: 100, height: 100)
+                        .shadow(color: AppColors.critical.opacity(0.6), radius: 20, x: 0, y: 0)
+                    
+                    Image(systemName: "exclamationmark.triangle.fill")
+                        .font(.system(size: 48))
+                        .foregroundColor(.white)
+                }
+                .scaleEffect(isAnimating ? 1.1 : 1.0)
+                .animation(.easeInOut(duration: 0.8).repeatForever(autoreverses: true), value: isAnimating)
+                
+                VStack(spacing: 8) {
+                    Text("CRITICAL HEALTH EVENT")
+                        .font(AppFonts.title1)
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
+                        .multilineTextAlignment(.center)
+                    
+                    Text("Stay calm. Help is on the way.")
+                        .font(AppFonts.headline)
+                        .foregroundColor(.white.opacity(0.8))
+                }
+                
+                // Emergency instructions (large, clear, numbered)
+                VStack(alignment: .leading, spacing: 20) {
+                    InstructionRow(number: 1, text: "Sit down immediately")
+                    InstructionRow(number: 2, text: "Take slow, deep breaths")
+                    InstructionRow(number: 3, text: "Emergency contacts have been notified")
+                    InstructionRow(number: 4, text: "Drone dispatched - ETA 8 minutes")
+                }
+                .padding(24)
+                .background(
+                    RoundedRectangle(cornerRadius: 24)
+                        .fill(Color.white.opacity(0.15))
+                        .background(.ultraThinMaterial)
+                )
+                .padding(.horizontal, 20)
+                
+                Spacer()
+                
+                Button(action: {
+                    presentationMode.wrappedValue.dismiss()
+                }) {
+                    Text("I AM SAFE - DISMISS")
+                        .font(AppFonts.headline)
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.white.opacity(0.2))
+                        .cornerRadius(16)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 16)
+                                .stroke(Color.white.opacity(0.5), lineWidth: 1)
+                        )
+                }
+                .padding(.horizontal, 20)
+                .padding(.bottom, 20)
             }
+            .padding(.top, 40)
         }
-        .padding(.vertical, 8)
+        .onAppear {
+            isAnimating = true
+        }
     }
 }
